@@ -15,8 +15,18 @@ export class TodoController {
   }
 
   static createTodo(req: Request, res: Response) {
-    TodoCollection.create(req.body.id, req.body.name).then((result) => {
-      res.status(200).send(result.affectedRows.toString());
-    });
+    TodoCollection.create(Number(req.params.id), req.body.name).then(
+      (result) => {
+        res.status(200).send(result.affectedRows.toString());
+      }
+    );
+  }
+
+  static updateTodo(req: Request, res: Response) {
+    TodoCollection.update(Number(req.params.id), req.body.name).then(
+      (result) => {
+        res.status(200).send(result.affectedRows.toString());
+      }
+    );
   }
 }
