@@ -7,8 +7,9 @@ const router: Router = express.Router();
 mapRoutes(router, {
   "/todos": {
     get: TodoController.getAllTodos,
+    post: TodoController.createTodo,
     "/:id": {
-      get: TodoController.getTodo
+      get: TodoController.getTodo,
     }
   }
 });
