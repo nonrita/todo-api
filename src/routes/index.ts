@@ -6,7 +6,10 @@ const router: Router = express.Router();
 
 mapRoutes(router, {
   "/todos": {
-    get: TodoController.getAllTodos
+    get: TodoController.getAllTodos,
+    "/:id": {
+      get: TodoController.getTodo
+    }
   }
 });
 
