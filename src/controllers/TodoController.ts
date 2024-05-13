@@ -29,4 +29,10 @@ export class TodoController {
       }
     );
   }
+
+  static deleteTodo(req: Request, res: Response) {
+    TodoCollection.delete(Number(req.params.id)).then((result) => {
+      res.status(200).send(result.affectedRows.toString());
+    });
+  }
 }

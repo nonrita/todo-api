@@ -11,6 +11,7 @@ mapRoutes(router, {
       get: TodoController.getTodo,
       post: TodoController.createTodo,
       put: TodoController.updateTodo,
+      delete: TodoController.deleteTodo,
     }
   }
 });

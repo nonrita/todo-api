@@ -35,4 +35,14 @@ export class TodoCollection {
       return result;
     });
   }
+
+  static delete(id: number): Promise<ResultSetHeader> {
+    console.log(id);
+    const sql: string = "delete from test where `id` = ? ";
+    const values = [id];
+    return pool.query<ResultSetHeader>(sql, values).then(([result, field]) => {
+      console.log(result);
+      return result;
+    });
+  }
 }
