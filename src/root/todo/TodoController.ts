@@ -30,14 +30,12 @@ export class TodoController {
     const text: string = req.body.text;
 
     const todo: Todo | null = await this.prisma.todo.create({
-      data : {title, text}
+      data: { title, text },
     });
     if (todo) {
       res.status(200).json(todo);
     } else {
-      res
-        .status(500)
-        .json({ message: `のIDのTodoは見つかりませんでした` });
+      res.status(500).json({ message: `Todoを作ることができませんでした` });
     }
   };
 }
