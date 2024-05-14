@@ -10,7 +10,7 @@ export class TodoController {
   };
 
   findById = async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
+    const id: number = parseInt(req.params.id);
     const todo: Todo | null = await this.prisma.todo.findUnique({
       where: {
         id,
@@ -19,7 +19,9 @@ export class TodoController {
     if (todo) {
       res.status(200).json(todo);
     } else {
-      res.status(500).json({message: `${id}のIDのTodoは見つかりませんでした`});
+      res
+        .status(500)
+        .json({ message: `${id}のIDのTodoは見つかりませんでした` });
     }
   };
 }
