@@ -36,6 +36,22 @@ export class TodoController {
     res.status(200).json(todo);
   };
 
+  update = async (req: Request, res: Response) => {
+    const id: number = parseInt(req.params.id);
+    const title: string | undefined = req.body.title;
+    const text: string | undefined = req.body.text;
+    const completed: boolean | undefined = req.body.completed;
+
+    const todo: Todo = await this.prisma.todo.update({
+      where: {
+        id
+      },
+      data: { title, text, completed },
+    });
+
+    res.status(200).json(todo);
+  };
+
   delete = async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id);
 

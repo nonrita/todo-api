@@ -12,6 +12,7 @@ mapRoutes(router, {
     post: todoController.create,
     "/:id": {
       get: todoController.findById,
+      put: todoController.update,
       delete: todoController.delete,
     },
   },
