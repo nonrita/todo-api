@@ -11,6 +11,7 @@ mapRoutes(
   {
     '/todos': {
       get: todoController.getAll,
+      post: todoController.create,
       '/:id': {
         get:  todoController.findById
       }
