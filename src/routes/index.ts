@@ -4,13 +4,16 @@ import { TodoController } from "../root/todo/TodoController";
 
 const router: Router = express.Router();
 
-const userController: TodoController = new TodoController();
+const todoController: TodoController = new TodoController();
 
 mapRoutes(
   router,
   {
     '/todos': {
-      get: userController.getAll,
+      get: todoController.getAll,
+      '/:id': {
+        get:  todoController.findById
+      }
     },
 });
 
