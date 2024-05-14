@@ -35,4 +35,16 @@ export class TodoController {
 
     res.status(200).json(todo);
   };
+
+  delete = async (req: Request, res: Response) => {
+    const id: number = parseInt(req.params.id);
+
+    const todo: Todo = await this.prisma.todo.delete({
+      where: {
+        id,
+      },
+    });
+
+    res.status(200).json(todo);
+  };
 }
