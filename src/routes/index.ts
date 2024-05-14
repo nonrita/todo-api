@@ -1,31 +1,17 @@
-import express, { RequestHandler, Router, Request, Response } from "express";
+import express, { Router, Request, Response } from "express";
 import mapRoutes from "./mapRoutes";
+import { TodoController } from "../root/todo/TodoController";
 
 const router: Router = express.Router();
+
+const userController: TodoController = new TodoController();
 
 mapRoutes(
   router,
   {
-    '/test': {
-      get: function(req: Request, res: Response){
-        res.send("get test")
-      },
-      '/in': {
-        get: function(req: Request, res: Response){
-          res.send("get in test")
-        },
-      },
-      '/:id': {
-        get: function(req: Request, res: Response){
-          res.send(req.params);
-        },
-      },
+    '/todos': {
+      get: userController.getAll,
     },
-    '/test2': {
-      get: function(req: Request, res: Response){
-        res.send("get test2")
-      },
-    }
 });
 
 export default router;
